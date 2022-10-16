@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/yts_movie_redux/static/css/main.ab3b60de.css",
+    "main.js": "/yts_movie_redux/static/js/main.323cbee2.js",
+    "index.html": "/yts_movie_redux/index.html",
+    "main.ab3b60de.css.map": "/yts_movie_redux/static/css/main.ab3b60de.css.map",
+    "main.323cbee2.js.map": "/yts_movie_redux/static/js/main.323cbee2.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.ab3b60de.css",
+    "static/js/main.323cbee2.js"
+  ]
+}
