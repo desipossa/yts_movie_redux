@@ -2,13 +2,14 @@ import { configureStore, createAsyncThunk, createSlice } from "@reduxjs/toolkit"
 import axios from "axios";
 
 
-//thunk 
+//thunk ...
 
 const getMovie = createAsyncThunk(
     '영화 받아오기',
-    async () => {
-        const res = await axios.get('https://yts.mx/api/v2/list_movies.json?limit=5&page=1');
-        return res.data.data.movies
+    async (set) => {
+        const res = await axios.get(`https://yts.mx/api/v2/list_movies.json?limit=${set.limit}&page=${set.pagenum}&genre=${set.genre ? set.genre : ''}`);
+        { console.log(res.data) }
+        return res.data.data
     }
 )
 export { getMovie }
@@ -18,14 +19,25 @@ const listMovie = createSlice({
     initialState: [],
     reducers: {},
     extraReducers: {
-        [getMovie.fulfilled]: (state, action) => state = action.payload
+        [getMovie.fulfilled]: (state, action) => action.payload
     }
 });
 
 
+const toggle = createSlice({
+    name: '일반적으로 쓸 toggle',
+    initialState: false,
+    reducers: {
+        setToggle: (state, action) => action.payload
+    }
+});
+export const { setToggle } = toggle.actions;
+
+
 const store = configureStore({
     reducer: {
-        listMovie: listMovie.reducer
+        listMovie: listMovie.reducer,
+        toggle: toggle.reducer
     }
 });
 
